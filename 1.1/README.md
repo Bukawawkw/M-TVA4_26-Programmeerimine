@@ -1,4 +1,4 @@
-## Selle ülesanne piirangud
+## Selle Ülesanne: "Töö 1.1 | Funktsioonide print(), input(), float(), int() kasutamine" piirangud:
 **Oli lubatud kasutada ainult need funktsioonid:**
 - Tava funktsioonid: `print(), input(), float(), int(), type()`
 - Teksti funktsioonid: `upper(), lower(), capitalize()`
