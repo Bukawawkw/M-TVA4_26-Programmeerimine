@@ -1,4 +1,4 @@
-## Selle kursuse piirangud
+## Selle ülesanne piirangud
 **Oli lubatud kasutada ainult need funktsioonid:**
 - Tava funktsioonid: `print(), input(), float(), int(), type()`
 - Teksti funktsioonid: `upper(), lower(), capitalize()`
