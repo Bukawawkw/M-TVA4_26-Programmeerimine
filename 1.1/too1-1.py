@@ -116,7 +116,7 @@ Leia nende arvude summa, jagatuna kasutaja poolt sisestatud arvuga, täisarvulin
 '''
 a, b, c, d, e = int(input("Sisesta 1 arv: ")), int(input("Sisesta 2 arv: ")), int(input("Sisesta 3 arv: ")), int(input("Sisesta 4 arv: ")), int(input("Sisesta 5 arv: "))
 keskmine = (a + b + c + d + e) / 5
-print(f"\n  {a} + {b} + {c} + {d} + {e}\n -------------------   =  {round(keskmine, 0)}\n          5    \n")
+print(f"\n  {a} + {b} + {c} + {d} + {e}\n -------------------   =  {round(keskmine, 2)}\n          5    \n")
 
 '''
 [8]
