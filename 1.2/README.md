@@ -3,6 +3,7 @@
 - Lisa kommentaar, kus kirjelda, mis parandatud oli.
 
 
+
 > **Programmi tulemus peab olema nii:**
 - Original:
 
@@ -12,13 +13,16 @@
 <img src="Screenshot_2026-11-17_23-31-01.png">
 
 
+
+
 ## Seal oli ka lisa BOONUS ülesanne:
-> - Muuda programmi nii, et see kontrolliks muutujatesse sisestatud andmete tüüpi, 
+> Muuda programmi nii, et see kontrolliks muutujatesse sisestatud andmete tüüpi, 
 blokeerides selle seni, kuni sisestame vajalikud andmed.
 
 > P.S Vaata fail nimega "lisa1-2variant.py"
 <img src="Screenshot_2026-11-17_23-48-11-lisa.png">
 
 
-## Ülesanne difficulty?:
+> **Ülesanne difficulty my based opinion?:**
+
 **EASY / NOOB MODE**
