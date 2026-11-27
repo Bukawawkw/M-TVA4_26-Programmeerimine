@@ -93,7 +93,7 @@ try:
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if piim_soov.isdigit(): piim_soov = int(piim_soov)
-        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        # Otherwise if it's some kind of character, float or negative value instead of a digit, we raise a ValueError
         else:
             program_part = "amount"
             raise ValueError
@@ -118,7 +118,7 @@ try:
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if sai_soov.isdigit(): sai_soov = int(sai_soov)
-        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        # Otherwise if it's some kind of character, float or negative value instead of a digit, we raise a ValueError
         else:
             program_part = "amount"
             raise ValueError
@@ -143,7 +143,7 @@ try:
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if leib_soov.isdigit(): leib_soov = int(leib_soov)
-        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        # Otherwise if it's some kind of character, float or negative value instead of a digit, we raise a ValueError
         else:
             program_part = "amount"
             raise ValueError
@@ -168,7 +168,7 @@ try:
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if porgand_soov.isdigit(): porgand_soov = int(porgand_soov)
-        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        # Otherwise if it's some kind of character, float or negative value instead of a digit, we raise a ValueError
         else:
             program_part = "amount"
             raise ValueError
@@ -193,7 +193,7 @@ try:
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if tomat_soov.isdigit(): tomat_soov = int(tomat_soov)
-        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        # Otherwise if it's some kind of character, float or negative value instead of a digit, we raise a ValueError
         else:
             program_part = "amount"
             raise ValueError
@@ -218,7 +218,7 @@ try:
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if kurk_soov.isdigit(): kurk_soov = int(kurk_soov)
-        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        # Otherwise if it's some kind of character, float or negative value instead of a digit, we raise a ValueError
         else:
             program_part = "amount"
             raise ValueError
