@@ -16,7 +16,7 @@ from datetime import datetime
 # To halt the program execution in case we have an error
 import sys 
 
-# Initialize date and save it into the variable that we can later format both into day and time
+# Initialize date and save it into the variable that we can later on format both into day and time separately on output
 tana = datetime.now()
 # For the pretty purposes to imitate how checks actually look in real life
 offset = 49
@@ -27,7 +27,9 @@ delimiter = "-" * offset
 # Default value: "start"
 program_part = "start"
 # Conditional check against these values in list to save up on a variable call overhead
-choices_variant = ["yes", "ye", 'y', "nah", "no", 'n']
+yes_variant = ["yes", "ye", 'y']
+no_variant = ["nah", "no", 'n']
+choices_variant = yes_variant + no_variant
 # Also we'll use another trick for the final receipt of the purchase.. Cause why not? 
 # Python is cursed enough to allow str + str without explicitly using concat-equivalent function
 receipt_str = f"""\nSinu tšekk:
@@ -80,19 +82,19 @@ print(f"""---- ÜLESANNE [17]: POES -----\n\n---MEIE KATALOOG:------------------
 """)
 
 try:
-    piim_soov = input(f"[{piim_str.capitalize()}: {str(piim_hind) + "€"}] OSTA?\n[Y/N]: ").lower()
-    # Check against whether input value is an alphabet and if it's not one then just call ValueError
-    if not piim_soov.isalpha() or piim_soov not in choices_variant:
+    piim_soov = input(f"[{piim_str.capitalize()}: {str(piim_hind)} €]" OSTA?\n[Y/N]: ").lower()
+    # Check against existing possible choices and if it's not one then just call ValueError
+    if piim_soov not in choices_variant:
         raise ValueError
 
     # Now we can continue with out purchase logic
-    if piim_soov == "yes" or piim_soov == 'y':
+    if piim_soov in yes_variant:
         piim_soov = input("Kui palju?: ")
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if piim_soov.isdigit(): piim_soov = int(piim_soov)
-        # Otherwise if it's some kind of character instead of a digit we raise a ValueError
-        elif piim_soov.isalpha():
+        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        else:
             program_part = "amount"
             raise ValueError
 
@@ -100,145 +102,150 @@ try:
         if piim_soov > 0:
             receipt_str += f"   {piim_str.upper()}   \t\t{piim_hind} €\t\t{round(piim_hind * piim_soov, 2)} € [x{piim_soov}]\n"
             final_hind += piim_hind * piim_soov
-            print(f"{piim_str.capitalize()} have been added to your cart!\n")
+            print(f"{piim_str.capitalize()} on lisatud ostukorvi!\n")
         else:
             program_part = "null"
             raise ValueError
     
-    sai_soov = input(f"[{sai_str.capitalize()}: {str(sai_hind) + "€"}] OSTA?\n[Y/N]: ").lower()
-    # Check against whether input value is an alphabet and if it's not one then just call ValueError
-    if not sai_soov.isalpha() or sai_soov not in choices_variant:
+    sai_soov = input(f"[{sai_str.capitalize()}: {str(sai_hind)} €]" OSTA?\n[Y/N]: ").lower()
+    # Check against existing possible choices and if it's not one then just call ValueError
+    if sai_soov not in choices_variant:
         raise ValueError
 
     # Now we can continue with out purchase logic
-    if sai_soov == "yes" or sai_soov == 'y':
+    if sai_soov in yes_variant:
         sai_soov = input("Kui palju?: ")
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if sai_soov.isdigit(): sai_soov = int(sai_soov)
-        # Otherwise if it's some kind of character instead of a digit we raise a ValueError
-        elif sai_soov.isalpha():
+        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        else:
             program_part = "amount"
             raise ValueError
 
+        # Now we can continue with the digit check against it being a NULL value
         if sai_soov > 0:
             receipt_str += f"   {sai_str.upper()}    \t\t{sai_hind} €\t\t{round(sai_hind * sai_soov, 2)} € [x{sai_soov}]\n"
             final_hind += sai_hind * sai_soov
-            print(f"{sai_str.capitalize()} have been added to your cart!\n") 
+            print(f"{sai_str.capitalize()} on lisatud ostukorvi!\n") 
         else:
             program_part = "null"
             raise ValueError
 
-    leib_soov = input(f"[{leib_str.capitalize()}: {str(leib_hind) + "€"}] OSTA?\n[Y/N]: ").lower()
-    # Check against whether input value is an alphabet and if it's not one then just call ValueError
-    if not leib_soov.isalpha() or leib_soov not in choices_variant:
+    leib_soov = input(f"[{leib_str.capitalize()}: {str(leib_hind)} €] OSTA?\n[Y/N]: ").lower()
+    # Check against existing possible choices and if it's not one then just call ValueError
+    if leib_soov not in choices_variant:
         raise ValueError
 
     # Now we can continue with out purchase logic
-    if leib_soov == "yes" or leib_soov == 'y':
+    if leib_soov in yes_variant:
         leib_soov = input("Kui palju?: ")
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if leib_soov.isdigit(): leib_soov = int(leib_soov)
-        # Otherwise if it's some kind of character instead of a digit we raise a ValueError
-        elif leib_soov.isalpha():
+        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        else:
             program_part = "amount"
             raise ValueError
-        
+
+        # Now we can continue with the digit check against it being a NULL value
         if leib_soov > 0:
             receipt_str += f"   {leib_str.upper()}    \t\t{leib_hind} €\t\t{round(leib_hind * leib_soov, 2)} € [x{leib_soov}]\n"
             final_hind += leib_hind * leib_soov
-            print(f"{leib_str.capitalize()} have been added to your cart!\n") 
+            print(f"{leib_str.capitalize()} on lisatud ostukorvi!\n") 
         else:
             program_part = "null"
             raise ValueError
 
-    porgand_soov = input(f"[{porgand_str.capitalize()}: {str(porgand_hind) + "€"}] OSTA?\n[Y/N]: ").lower()
-    # Check against whether input value is an alphabet and if it's not one then just call ValueError
-    if not porgand_soov.isalpha() or porgand_soov not in choices_variant:
+    porgand_soov = input(f"[{porgand_str.capitalize()}: {str(porgand_hind)} €]" OSTA?\n[Y/N]: ").lower()
+    # Check against existing possible choices and if it's not one then just call ValueError
+    if porgand_soov not in choices_variant:
         raise ValueError
 
     # Now we can continue with out purchase logic
-    if porgand_soov == "yes" or porgand_soov == 'y':
+    if porgand_soov in yes_variant:
         porgand_soov = input("Kui palju?: ")
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if porgand_soov.isdigit(): porgand_soov = int(porgand_soov)
-        # Otherwise if it's some kind of character instead of a digit we raise a ValueError
-        elif porgand_soov.isalpha():
+        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        else:
             program_part = "amount"
             raise ValueError
-        
+
+        # Now we can continue with the digit check against it being a NULL value
         if porgand_soov > 0:
             receipt_str += f"   {porgand_str.upper()}    \t\t{porgand_hind} €\t\t{round(porgand_hind * porgand_soov, 2)} € [x{porgand_soov}]\n"
             final_hind += porgand_hind * porgand_soov
-            print(f"{porgand_str.capitalize()} have been added to your cart!\n") 
+            print(f"{porgand_str.capitalize()} on lisatud ostukorvi!\n") 
         else:
             program_part = "null"
             raise ValueError
 
-    tomat_soov = input(f"[{tomat_str.capitalize()}: {str(tomat_hind) + "€"}] OSTA?\n[Y/N]: ").lower()
-    # Check against whether input value is an alphabet and if it's not one then just call ValueError
-    if not tomat_soov.isalpha() or tomat_soov not in choices_variant:
+    tomat_soov = input(f"[{tomat_str.capitalize()}: {str(tomat_hind)} €] OSTA?\n[Y/N]: ").lower()
+    # Check against existing possible choices and if it's not one then just call ValueError
+    if tomat_soov not in choices_variant:
         raise ValueError
 
     # Now we can continue with out purchase logic
-    if tomat_soov == "yes" or tomat_soov == 'y':
+    if tomat_soov in yes_variant:
         tomat_soov = input("Kui palju?: ")
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if tomat_soov.isdigit(): tomat_soov = int(tomat_soov)
-        # Otherwise if it's some kind of character instead of a digit we raise a ValueError
-        elif tomat_soov.isalpha():
+        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        else:
             program_part = "amount"
             raise ValueError
-        
+
+        # Now we can continue with the digit check against it being a NULL value
         if tomat_soov > 0:
             receipt_str += f"   {tomat_str.upper()}    \t\t{tomat_hind} €\t\t{round(tomat_hind * tomat_soov, 2)} € [x{tomat_soov}]\n"
             final_hind += tomat_hind * tomat_soov
-            print(f"{tomat_str.capitalize()} have been added to your cart!\n") 
+            print(f"{tomat_str.capitalize()} on lisatud ostukorvi!\n") 
         else:
             program_part = "null"
             raise ValueError
 
-    kurk_soov = input(f"[{kurk_str.capitalize()}: {str(kurk_hind) + "€"}] OSTA?\n[Y/N]: ").lower()
-    # Check against whether input value is an alphabet and if it's not one then just call ValueError
-    if not kurk_soov.isalpha() or kurk_soov not in choices_variant:
+    kurk_soov = input(f"[{kurk_str.capitalize()}: {str(kurk_hind)} €] OSTA?\n[Y/N]: ").lower()
+    # Check against existing possible choices and if it's not one then just call ValueError
+    if kurk_soov not in choices_variant:
         raise ValueError
 
     # Now we can continue with out purchase logic
-    if kurk_soov == "yes" or kurk_soov == 'y':
+    if kurk_soov in yes_variant:
         kurk_soov = input("Kui palju?: ")
         # Here comes foolproof checks to exclude any wrong input from the user whatsoever
         # if it's a proper digit then we can wrap it as int and continue with the program as it is
         if kurk_soov.isdigit(): kurk_soov = int(kurk_soov)
-        # Otherwise if it's some kind of character instead of a digit we raise a ValueError
-        elif kurk_soov.isalpha():
+        # Otherwise if it's some kind of character instead of a digit, float or negative value we raise a ValueError
+        else:
             program_part = "amount"
             raise ValueError
-        
+
+        # Now we can continue with the digit check against it being a NULL value
         if kurk_soov > 0:
             receipt_str += f"   {kurk_str.upper()}    \t\t{kurk_hind} €\t\t{round(kurk_hind * kurk_soov, 2)} € [x{kurk_soov}]\n"
             final_hind += kurk_hind * kurk_soov
-            print(f"{kurk_str.capitalize()} have been added to your cart!\n") 
+            print(f"{kurk_str.capitalize()} on lisatud ostukorvi!\n") 
         else:
             program_part = "null"
             raise ValueError
     
     # If the user bought anything at all then we can safely print out the final tsekk
     if final_hind > 0:
-        receipt_str += f"{delimiter}\n           KOGUS:\t\t\t{round(final_hind, 2)} €\n{delimiter}\n\n\t\tAitäh ostmise eest!\n\n"
+        receipt_str += f"{delimiter}\n           KOGUSUMMA:\t\t\t{round(final_hind, 2)} €\n{delimiter}\n\n\t\tAitäh ostmise eest!\n\n"
         print(receipt_str)
     else:
         print("\nHead aega! Ootame teid tagasi!\n")
 
 except ValueError:
     if program_part == "start":
-        print(f"Sisestatud valik ei ole õige, sobivaid valikud on: {choices_variant}\nPalun proovige uuesti!\n") 
+        print(f"Sisestatud valik ei ole õige, sobivad valikud on: {choices_variant}\nPalun proovige uuesti!\n") 
     elif program_part == "null":
         print("Sisestatud andmed ei ole õiged! Arv peab olema rohkem kui 0! Palun proovige uuesti!\n")
     elif program_part == "amount":
-        print("Sisestatud andmed ei ole õiged! Siin sobivad ainult täisarvud. Palun proovige uuest!\n")
+        print("Sisestatud andmed ei ole õiged! Siin sobivad ainult positiivsed täisarvud. Palun proovige uuesti!\n")
 
     # After all of those checks we just safely halt the program execution
     # because it caught an error somewhere from the wrong user input
