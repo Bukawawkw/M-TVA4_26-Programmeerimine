@@ -28,8 +28,8 @@
   >
   > ```WIP
   
-    </details>
-    </td>
+  </details>
+  </td>
   </tr>
 </table>
 
@@ -52,8 +52,8 @@
   >
   > ```WIP
   
-    </details>
-    </td>
+  </details>
+  </td>
   </tr>
 </table>
 
@@ -78,10 +78,11 @@
   > ...
   > piim   2 × 1.35 = 2.70
   > leib   1 × 2.10 = 2.10
-  > Kokku: 4.80 € ```
+  > Kokku: 4.80 € 
+  > ```
 
-    </details>
-    </td>
+  </details>
+  </td>
   </tr>
 </table>
 
@@ -104,4 +105,5 @@
 >| **KOKKU**| **100** |
 
 > **Ülesanne difficulty my based opinion?:**
-** DEPENDS ON THE TASK TASE 1-3 / BUT HELLA TIME CONSUMING AND MEDIUM FROM 3 ONWARDS **
+
+**DEPENDS ON THE TASK TASE 1-3 / BUT HELLA TIME CONSUMING AND MEDIUM FROM 3 ONWARDS**
